@@ -1,8 +1,9 @@
+
 import java.io.*;
 import java.util.*;
 
 // Author : Sulabh Ambule
-public class Creating_String {
+public class Apple_Division {
 
   public static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
   static long MOD = (long) (1e9 + 7);
@@ -26,37 +27,16 @@ public class Creating_String {
    * 
    */
   private static void Accepted() {
-    String s = in.next();
-    char[] arr = s.toCharArray();
-
-    Set<String> perm = new HashSet<>();
-    boolean[] used = new boolean[s.length()];
-
-    generateP(arr, used, new StringBuilder(), perm);
-    List<String> sortedPerm = new ArrayList<>(perm);
-    Collections.sort(sortedPerm);
-
-    out.println(perm.size());
-    for (String p : sortedPerm) {
-      out.println(p);
-    }
-  }
-
-  private static void generateP(char[] arr, boolean[] used, StringBuilder current, Set<String> result) {
-    if (current.length() == arr.length) {
-      result.add(current.toString());
-      return;
-    }
-
+    int n = in.nextInt();
+    long[] arr = new long[n];
+    long sum = 0;
     for (int i = 0; i < arr.length; i++) {
-      if (!used[i]) {
-        used[i] = true;
-        current.append(arr[i]);
-        generateP(arr, used, current, result);
-        current.deleteCharAt(current.length() - 1);
-        used[i] = false;
-      }
+      arr[i] = in.nextInt();
+      sum += arr[i];
     }
+
+    long sum1 = sum / 2;
+    System.out.println(sum - 2*sum1);
   }
 
   static class FastReader {
